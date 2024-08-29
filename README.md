@@ -183,7 +183,7 @@ ros2 launch spot_driver spot_driver.launch.py [config_file:=<path/to/config.yaml
 ros2 launch flexbe_app flexbe_full.launch.py
 ```
 
-### 3. Create or Edit a Behavior (Assuming the FlexBE UI is running)
+### 3. Create or Edit a Behavior (Assuming the FlexBE App is running)
 1. **Create a New Behavior:** Click on the "Create New Behavior" button. Name your behavior and define its properties.
 2. **Add States:** Use the drag-and-drop interface to add states to your behavior. You can incorporate the provided states (e.g., sit, `stand`, `undock`, `upload_graph`) by dragging them from the list of available states.
 3. **Configure States:** Click on each state to configure its parameters, such as service calls or action goals. For instance, set parameters for the `upload_graph` state to include the `path_to_graph`.
