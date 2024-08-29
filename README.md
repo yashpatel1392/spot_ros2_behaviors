@@ -147,8 +147,8 @@ For detailed installation instructions, visit: [spot_ros2 Installation](https://
 **Commands:**
 ```bash
 # Clone the spot_ros2 repository
-# Replace `link_TO_be_ADDED` with the actual link
-git clone link_TO_be_ADDED
+# NOTE: Replace the link below with the link to the repository with the newly added services
+git clone https://github.com/bdaiinstitute/spot_ros2.git
 
 # Navigate to the spot_ros2 directory
 cd spot_ros2
@@ -159,6 +159,17 @@ git submodule update
 
 # Install dependencies for spot_ros2
 ./install_spot_ros2.sh
+```
+
+### 4. Clone and install this repository
+```
+git clone https://github.com/yashpatel1392/spot_ros2_behaviors
+```
+
+### 5. Build the workspace
+```
+colcon build
+source install/setup.bash
 ```
 
 ## Usage
