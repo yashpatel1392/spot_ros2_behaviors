@@ -1,4 +1,4 @@
-# FlexBE States and Behaviors for spot_ros2
+# Spot ROS2 FlexBE Behaviors and States
 
 This repository contains a collection of FlexBE states, which are designed as service calls to interact with Boston Dynamics Spot's APIs. These states are modular pieces of behavior logic used to build complex robot behaviors. FlexBE is a behavior engine that enables the easy construction of robot behaviors using state machines, allowing developers to define and sequence robotic actions in a visual and intuitive manner. Each state script in this repository represents a specific action that can be part of a larger FlexBE behavior. 
 
