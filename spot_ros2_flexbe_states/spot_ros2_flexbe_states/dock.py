@@ -26,7 +26,7 @@ class Dock(EventState):
 
         '''
 
-        def __init__(self, dock_id):
+        def __init__(self, spot_name, dock_id):
                 # Declare outcomes, input_keys, and output_keys by calling the super constructor with the corresponding arguments.
                 super().__init__(outcomes = ['continue', 'failed'])
 
@@ -34,7 +34,7 @@ class Dock(EventState):
 
                 self._dock_id = dock_id
 
-                self._service_topic = '/spot1/dock' # check the slash
+                self._service_topic = '/' + spot_name + '/dock'
                 self._service = ProxyServiceCaller({self._service_topic: Dock})
 
 

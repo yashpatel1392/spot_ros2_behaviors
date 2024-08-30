@@ -24,13 +24,13 @@ class GripperOpen(EventState):
 
         '''
 
-        def __init__(self):
+        def __init__(self, spot_name):
                 # Declare outcomes, input_keys, and output_keys by calling the super constructor with the corresponding arguments.
                 super().__init__(outcomes = ['continue', 'failed'])
 
                 ProxyServiceCaller.initialize(GripperOpen._node)
 
-                self._service_topic = '/spot1/open_gripper' # check the slash
+                self._service_topic = '/' + spot_name + '/open_gripper'
                 self._service = ProxyServiceCaller({self._service_topic: Trigger})
 
 

@@ -28,7 +28,7 @@ class Localize(EventState):
 
         '''
 
-        def __init__(self, waypoint_id):
+        def __init__(self, spot_name, waypoint_id):
                 # Declare outcomes, input_keys, and output_keys by calling the super constructor with the corresponding arguments.
                 super().__init__(outcomes = ['continue', 'failed'])
 
@@ -36,7 +36,7 @@ class Localize(EventState):
 
                 self._id = waypoint_id
 
-                self._service_topic = '/spot1/graph_nav_set_localization' # check the slash
+                self._service_topic = '/' + spot_name + '/graph_nav_set_localization'
                 self._service = ProxyServiceCaller({self._service_topic: GraphNavSetLocalization})
 
 

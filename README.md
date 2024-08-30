@@ -11,25 +11,36 @@ The states in this repository can also be combined with those in the [spot_nav_b
 * `arm_joint_move.py`: Calls the service for moving Spot's arm joints according to the 6 joint values provided as parameters. This state allows precise control of each arm joint, enabling complex manipulation tasks.
 
   **Parameters:**
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
   - **Name:** `joint_targets`
     - **Type:** `float32[]`
     - **Description:** The elements in this array should be in the following order, where each value corresponds to the target position for a specific joint: the first value is for joint `sh0`, the second is for `sh1`, the third is for `el0`, the fourth is for `el1`, the fifth is for `wr0`, and the sixth is for `wr1`.
 
 * `arm_stow.py`: Calls the service to move Spot’s arm to the stow position, safely securing it in a compact state.
 
-  **Parameters:** None
-
+  **Parameters:**
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
+    
 * `arm_unstow.py`: Calls the service to move Spot’s arm to the ready or unstow position, preparing it for manipulation tasks.
 
-  **Parameters:** None
+  **Parameters:** 
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
 
 * `capture_image.py`: Calls the service to capture images from Spot's cameras. This state allows specifying the camera source and the local path where the image should be saved.
 
   **Parameters:**
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
   - **Name:** `source`
     - **Type:** `string`
     - **Description:** The camera source from which the image should be captured. The available sources are: `back_fisheye_image`, `frontleft_fisheye_image`, `frontright_fisheye_image`, `hand_color_image`, `left_fisheye_image`, and `right_fisheye_image`.
-
   - **Name:** `image_save_path`
     - **Type:** `string`
     - **Description:** The file path where the captured image should be saved locally.
@@ -37,6 +48,9 @@ The states in this repository can also be combined with those in the [spot_nav_b
 * `dock.py`: Calls the service to command Spot to dock at a specified docking station, utilizing its onboard capabilities for autonomous docking.
 
   **Parameters:**
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
   - **Name:** `dock_id`
     - **Type:** `integer`
     - **Description:** The ID number of the docking station where Spot should dock.
@@ -44,28 +58,36 @@ The states in this repository can also be combined with those in the [spot_nav_b
 * `grasp.py`: Calls the service for commanding Spot to autonomously grasp a specified object from a given frame.
 
   **Parameters:**
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
   - **Name:** `frame`
     - **Type:** `String`
     - **Description:** The frame of reference from which the object’s coordinates are provided.
-
   - **Name:** `object_rt_frame`
     - **Type:** `float32[]`
-    - **Description:** The x, y, z coordinates of the object to be grasped, relative to the specified frame. Note that the array elements should be ordered as follows:
-      - First element: x
-      - Second element: y
-      - Third element: z
+    - **Description:** The x, y, z coordinates of the object to be grasped, relative to the specified frame. Note that the array elements should be ordered as follows: first element is x, second element is y, and third element is z.
 
 * `gripper_close.py`: Calls the service to close Spot's gripper, either to secure an object that is being held or to close it completely. This state is typically used immediately after the grasp state to continue holding the object.
 
-  **Parameters:** None
+  **Parameters:** 
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
 
 * `gripper_open.py`: Calls the service to open the Spot’s gripper. This state is typically used at the end of a manipulation sequence.
 
-  **Parameters:** None
+  **Parameters:** 
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
 
 * `localize.py`: Calls the service to localize Spot to a specific waypoint. It is typically used at the beginning of a navigation sequence to orient Spot at a designated waypoint.
 
   **Parameters:**
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
   - **Name:** `waypoint_id`
     - **Type:** `String`
     - **Description:** The full ID of the waypoint where Spot should localize itself. Use the complete waypoint ID (e.g., `maiden-bowfin-iR+9MA8N4SeW6mFwYh7uNQ==`) rather than short forms (e.g., `mb`).
@@ -73,33 +95,46 @@ The states in this repository can also be combined with those in the [spot_nav_b
 * `navigate.py`: Calls the service to navigate the Spot robot to a specified waypoint ID. Note that this navigation state uses waypoint IDs, not fiducials, as the fiducial option is not enabled within this state. This state can also localize the robot to a waypoint and upload a map if needed.
 
   **Parameters:**
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
   - **Name:** `goal_waypoint_id`
     - **Type:** `String`
     - **Description:** The full waypoint ID of the destination waypoint where Spot should navigate. Use the complete waypoint ID (e.g., `maiden-bowfin-iR+9MA8N4SeW6mFwYh7uNQ==`) rather than short forms (e.g., `mb`).
-
   - **Name:** `init_waypoint_id`
     - **Type:** `String`
     - **Description:** The full waypoint ID of the initial waypoint where Spot should localize itself. Use the complete waypoint ID (e.g., `maiden-bowfin-iR+9MA8N4SeW6mFwYh7uNQ==`) rather than short forms (e.g., `mb`).
-
   - **Name:** `upload_path`
     - **Type:** `String`
     - **Description:** Path to the directory containing the graph/map to be uploaded to the robot.
 
 * `sit.py`: Calls the service to command Spot to sit.
 
-  **Parameters:** None
+  **Parameters:** 
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
 
 * `stand.py`: Calls the service to command Spot to stand up.
 
-  **Parameters:** None
+  **Parameters:** 
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
 
 * `undock.py`: Calls the service to command Spot to undock from a docking station.
 
-  **Parameters:** None
+  **Parameters:** 
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
 
 * `upload_graph.py`: Calls the service to upload a graph to the Spot, which would be required for navigation.
 
   **Parameters:**
+  - **Name:** `spot_name`
+    - **Type:** `string`
+    - **Description:** The namespace for Spot which was provided when launching the Spot ROS2 driver.
   - **Name:** `path_to_graph`
     - **Type:** `String`
     - **Description:** Path to the directory containing the graph/map to be uploaded to the robot.

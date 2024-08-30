@@ -27,13 +27,13 @@ class CaptureImage(EventState):
 
         '''
 
-        def __init__(self, source, image_save_path):
+        def __init__(self, spot_name, source, image_save_path):
                 # Declare outcomes, input_keys, and output_keys by calling the super constructor with the corresponding arguments.
                 super().__init__(outcomes = ['continue', 'failed'])
 
                 ProxyServiceCaller.initialize(CaptureImage._node)
 
-                self._service_topic = '/spot1/capture_image' # check the slash
+                self._service_topic = '/' + spot_name + '/capture_image'
                 self._service = ProxyServiceCaller({self._service_topic: CaptureImage})
                 self._source = source
                 self._image_save_path = image_save_path

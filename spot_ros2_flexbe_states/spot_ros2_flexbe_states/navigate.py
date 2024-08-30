@@ -29,7 +29,7 @@ class Navigate(EventState):
 
         '''
 
-        def __init__(self, goal_waypoint, init_waypoint, upload_path):
+        def __init__(self, spot_name, goal_waypoint, init_waypoint, upload_path):
             # Declare outcomes, input_keys, and output_keys by calling the super constructor with the corresponding arguments.
             super().__init__(outcomes = ['continue', 'failed'])
 
@@ -39,7 +39,7 @@ class Navigate(EventState):
             self._navigate_to = goal_waypoint
             self._init_waypoint = init_waypoint
 
-            self._action_topic = '/spot1/navigate_to' # check the slash
+            self._action_topic = '/' + spot_name + '/navigate_to'
             self._client = ProxyActionClient({self._action_topic: NavigateToAction})
 
 

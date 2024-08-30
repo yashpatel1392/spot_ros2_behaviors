@@ -26,13 +26,13 @@ class Grasp(EventState):
         <= failed               indicates failure to complete the execution of the state
         '''
 
-        def __init__(self, frame, object_rt_frame):
+        def __init__(self, spot_name, frame, object_rt_frame):
                 # Declare outcomes, input_keys, and output_keys by calling the super constructor with the corresponding arguments.
                 super().__init__(outcomes = ['continue', 'failed'])
 
                 ProxyServiceCaller.initialize(Grasp._node)
 
-                self._service_topic = '/spot1/grasp' # check the slash
+                self._service_topic = '/' + spot_name + '/grasp'
                 self._service = ProxyServiceCaller({self._service_topic: Grasp})
                 object_rt_frame_arr = [float(x) for x in object_rt_frame.split(',')]
                 self._object_rt_frame = object_rt_frame_arr

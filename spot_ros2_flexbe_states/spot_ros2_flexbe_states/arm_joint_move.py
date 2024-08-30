@@ -23,13 +23,13 @@ class ArmJointMove(EventState):
 
         '''
 
-        def __init__(self, joint_targets):
+        def __init__(self, spot_name, joint_targets):
                 # Declare outcomes, input_keys, and output_keys by calling the super constructor with the corresponding arguments.
                 super().__init__(outcomes = ['continue', 'failed'])
 
                 ProxyServiceCaller.initialize(ArmJointMove._node)
 
-                self._service_topic = '/spot1/arm_joint_move' # check the slash
+                self._service_topic = '/' + spot_name + '/arm_joint_move'
                 self._service = ProxyServiceCaller({self._service_topic: ArmJointMove})
                 joint_targets_arr = [float(x) for x in joint_targets.split(',')]
                 self._joint_targets = joint_targets_arr

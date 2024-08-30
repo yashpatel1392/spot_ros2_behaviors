@@ -24,13 +24,13 @@ class ArmStow(EventState):
 
         '''
 
-        def __init__(self):
+        def __init__(self, spot_name):
                 # Declare outcomes, input_keys, and output_keys by calling the super constructor with the corresponding arguments.
                 super().__init__(outcomes = ['continue', 'failed'])
 
                 ProxyServiceCaller.initialize(ArmStow._node)
 
-                self._service_topic = '/spot1/arm_stow' # check the slash
+                self._service_topic = '/' + spot_name + '/arm_stow' 
                 self._service = ProxyServiceCaller({self._service_topic: Trigger})
 
 
