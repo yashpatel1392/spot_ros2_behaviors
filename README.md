@@ -2,6 +2,8 @@
 
 This repository contains a collection of FlexBE states, which are designed as service calls to interact with Boston Dynamics Spot's APIs. These states are modular pieces of behavior logic used to build complex robot behaviors. FlexBE is a behavior engine that enables the easy construction of robot behaviors using state machines, allowing developers to define and sequence robotic actions in a visual and intuitive manner. Each state script in this repository represents a specific action that can be part of a larger FlexBE behavior. 
 
+The capabilities implemented in this repository include navigation, manipulation, and docking. The navigation capabilities involve uploading a graph to the Spot robot, localizing it to a waypoint, and autonomously navigating to a specified goal. The manipulation capabilities include moving the robot's arm to predefined positions, such as stow and unstow, controlling the arm based on joint values, and autonomously grasping objects from a given frame. Additionally, the repository supports capturing images from any camera source on the Spot, controlling the gripper, and performing docking and undocking operations.
+
 The states in this repository can also be combined with those in the [spot_nav_behaviors repository](https://github.com/uml-robotics/spot_nav_behaviors) to enable multiple autonomous executions of behaviors. This is possible due to [the counter state](https://github.com/uml-robotics/spot_nav_behaviors/blob/master/spot_nav_flexbe_states/src/spot_nav_flexbe_states/counter.py) available in the spot_nav_behaviors repository, which allows for iterative execution of tasks.
 
 ----
